@@ -4,19 +4,6 @@ title: Pointwise Stationary Approximation
 permalink: /research/pointwise_stationary_approximation
 ---
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/javascript"
-    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
 
 We measure how well the Pointwise Stationary Approximation (PSA) serves for computing performance measures on Markov chains by comparing it to solutions computed with ODE-based methods that account for the non-stationarity in the model. We begin by looking at the US Bank Callcenter model. 
 

@@ -25,7 +25,7 @@ We show $$\lambda(t)$$ and $$s(t)$$ on a double axis plot in Figure 1 below.
 
 
 
-Observe that during maximum load, we have that $$\frac{\lambda(t)}{\mu}\approx 300$$ and hence, we choose a waiting room of size $$ S =300 + 10\sqrt{300}\approx 470$$. In other words, the state space is $$\mathcal{S} = \\{0,1,...,470\\}$$.
+Observe that during maximum load, we have that $$\frac{\lambda(t)}{\mu}\approx 300$$ and hence, we choose a waiting room of size $$ S =300 + 10\sqrt{300}\approx 470$$. In other words, the state space is $$\mathcal{S} = \{0,1,...,470\}$$.
 
 
 

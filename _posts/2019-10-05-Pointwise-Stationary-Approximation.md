@@ -61,6 +61,14 @@ $$
 
 
 
+![svg](/files/Research/Pointwise_Stationary_Approximation/prob_values.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/prob_rel_error.svg)
+
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/exp_wait_values.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/exp_wait_rel_error.svg)
+
+
 # Fast Rise Time
 
 We now investigate the discrepancy of PSA and NS when $$\lambda(t)$$ increases the fastest for varying choices of constant $$s(t)=s$$. From the US Callcenter data, we see that during the period of fastest increase, $$\lambda(t)$$ ranges from approximately $$~50/6 = 8.3$$ to $$100$$ from time $$t=420$$ to $$t=600$$. (This can be confirmed in Figure 1 above.) In other words, in the span of three hours, $$\lambda(t)$$ increases by about 90. 
@@ -73,22 +81,37 @@ Here we consider only the ramp up period going from $$\lambda=10$$ to $$\lambda 
 
 
 
-![svg](/files/Research/Pointwise_Stationary_Approximation/output_11_1.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_segment.svg)
 
 
 
 ### $$\rho=0.8$$ 
-<img src="/files/Research/Pointwise_Stationary_Approximation/rho_0.8.gif" />
 
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_prob_values_.8.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_prob_rel_error_.8.svg)
+
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_exp_wait_values_.8.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_exp_wait_rel_error_.8.svg)
 
 
 ### $$\rho=0.99$$ 
-<img src="/files/Research/Pointwise_Stationary_Approximation/rho_.99.gif" />
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_prob_values_.99.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_prob_rel_error_.99.svg)
+
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_exp_wait_values_.99.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_exp_wait_rel_error_.99.svg)
 
 
 
 
 ### $$\rho=1.1$$ 
-<img src="/files/Research/Pointwise_Stationary_Approximation/rho_1.1.gif" />
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_prob_values_1.1.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_prob_rel_error_1.1.svg)
+
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_exp_wait_values_1.1.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_exp_wait_rel_error_1.1.svg)
 
 

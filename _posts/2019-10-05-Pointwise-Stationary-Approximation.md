@@ -18,9 +18,8 @@ permalink: /research/pointwise_stationary_approximation
 </script>
 
 
-# Analysis of PSA vs. NS Methods 
+We measure how well the Pointwise Stationary Approximation (PSA) serves for computing performance measures on Markov chains by comparing it to solutions computed with ODE-based methods that account for the non-stationarity in the model. We begin by looking at the US Bank Callcenter model. 
 
-In this notebook, we explore the differences between PSA and NS for computing performance measures on Markov chains. We begin by looking at the US Bank Callcenter model. 
 ## US Bank Callcenter Model
 
 
@@ -33,7 +32,7 @@ $$
 
 We show $\lambda(t)$ and $s(t)$ on a double axis plot in Figure 1 below.
 
-![svg](lambda.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/lambda.svg)
 
 
 
@@ -42,23 +41,6 @@ Observe that during maximum load, we have that $\frac{\lambda(t)}{\mu}\approx 30
 
 
 We start by computing the non-stationary time evolution versus the stationary time evolution of the measures. For the NS model, we assume that we start at time 0 at the stationary distribution of Q(0), so that the methods coincide at time 0. 
-
-
-```julia
-t_f = 1440.0
-delta_t = 1
-num_sols = Int(t_f/delta_t)
-p = Dict("forwards" => true)
-S = 470
-u_0 = bd_stat(US_Bank_Q(0))
-prob = ODEProblem(US_Bank_dudt, u_0, (0.0, t_f),p)
-NS_sol = solve(prob, CVODE_BDF(), reltol=1e-14, abstol=1e-14, saveat=delta_t)
-PSA_sol = zeros(S+1,num_sols)
-for i in range(1,stop=num_sols)
-    PSA_sol[:,i] = get_stat_dist_Q(US_Bank_Q(NS_sol.t[i]))
-end
-
-```
 
 In the following cell we compute some performance measures. In particular, we plot the probability-of-waiting, expected number waiting, and mean waiting time. The probability of waiting corresponds to the reward function
 $$
@@ -76,67 +58,7 @@ $$
 
 
 
-```julia
-# The first index corresponds to 
-prob_of_wait = zeros(num_sols,2);
-exp_num_wait = zeros(num_sols,2);
-for i in range(1,stop=num_sols)
-    prob_of_wait[i,1]  = PSA_sol[:,i]' * prob_of_wait_r(US_Bank_S, US_Bank_Servers(NS_sol.t[i]))
-    prob_of_wait[i,2]  = NS_sol[i]' * prob_of_wait_r(US_Bank_S, US_Bank_Servers(NS_sol.t[i]))
-    
-    exp_num_wait[i,1] = PSA_sol[:,i]' * number_waiting_r(US_Bank_S, US_Bank_Servers(NS_sol.t[i]))
-    exp_num_wait[i,2] = NS_sol[:,i]' * number_waiting_r(US_Bank_S, US_Bank_Servers(NS_sol.t[i]))        
-end
-
-```
-
-
-<!-- ```julia
-# To make gif interactive: change @gif to @manpiulate and comment out "every 1" at the end.
-
-t = 1:1:1440
-states = 0:1:S
-lambdas = US_Bank_Lambda(t)
-servers = US_Bank_Servers(t)
-anim = @gif for t_now=1:1:1400
-    p1 = plot(t,lambdas, label="\\lambda (t)", xlabel="Time (min)", ylabel="\\lambda(t)",legend=false)
-    plot!([t_now],[US_Bank_Lambda(t_now)],color="red", seriestype=:scatter, label="t")
-    p2 = plot(t,servers, xlabel="Time (min)", ylabel="servers")
-    plot!([t_now],[US_Bank_Servers(t_now)],color="red", seriestype=:scatter,legend=false)
-    p3 = plot(states, PSA_sol[:,t_now],xlabel="State x",ylabel="PSA P(x)",label="PSA",legend=false)
-    p4 = plot(states, NS_sol[:,t_now], xlabel="State x",ylabel= "NS P(x)",label="NS",legend=false)
-    
-    # Performance Measures
-    # Loss Prob
-    p5 = plot([t,t], prob_of_wait[:,:],xlabel="Time (min)", ylabel="Prob of wait (NS)",label = ["PSA","NS"])
-    names_5 = ["$(@sprintf("%.3e", (prob_of_wait[t_now,1])))","$(@sprintf("%.3e", (prob_of_wait[t_now,2])))"]
-    plot!([t_now],[prob_of_wait[t_now,1]], color="lightblue", seriestype=:scatter, label = ["PSA","NS",names_5[1]])
-    plot!([t_now],[prob_of_wait[t_now,2]], color="orange", seriestype=:scatter, label = ["PSA","NS",names_5[1],names_5[2]], legend =:bottomleft)
-    
-    p6 = plot([t],((prob_of_wait[:,1]-prob_of_wait[:,2])./prob_of_wait[:,2]), ylabel ="prob_wait: (PSA-NS)/NS", xlabel="t")
-    plot!([t_now],[((prob_of_wait[t_now,1]-prob_of_wait[t_now,2])./prob_of_wait[t_now,2])], color="red", 
-        seriestype=:scatter,left_margin = 10PlotMeasures.mm, label ="t", legend =false) 
-        
-    # Exp Wait Time
-    p7 = plot([t,t], 3*exp_num_wait[:,:],xlabel="Time (min)", ylabel="Expected Waiting Time",label = ["PSA","NS"],legend =:bottomleft)
-    names_7 = ["$(@sprintf("%.3e", (3*exp_num_wait[t_now,1])))","$(@sprintf("%.3e", (3*exp_num_wait[t_now,2])))"]
-    plot!([t_now],[3*exp_num_wait[t_now,1]], color="lightblue", label=names_7[1], seriestype=:scatter)
-    plot!([t_now],[3*exp_num_wait[t_now,2]], color="orange", seriestype=:scatter, label=names_7[2])
-    
-    p8 = plot([t],((exp_num_wait[:,1]-exp_num_wait[:,2])./exp_num_wait[:,2]), ylabel ="exp_wait: (PSA-NS)/NS", xlabel="t", left_margin = 10PlotMeasures.mm)
-    plot!([t_now],[((exp_num_wait[t_now,1]-exp_num_wait[t_now,2])./exp_num_wait[t_now,2])], color="red", seriestype=:scatter, label ="t", legend =false)
-    
-    plot(p1,p2,p3,p4,p5,p6,p7,p8, layout = (8,1),size =(1000,1600))
-    
-    end  every 10
-
-``` -->
-
-
-
-
-
-<img src="US_Bank.gif" />
+<img src="/files/Research/Pointwise_Stationary_Approximation/US_Bank.gif" />
 
 
 
@@ -153,22 +75,22 @@ $\rho_{\max} = \rho(180)$ varies in $\\{.8,.9,1.1\\}$.
 
 
 
-![svg](output_11_1.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/output_11_1.svg)
 
 
 
 ### $\rho=0.8$ 
-<img src="rho_0.8.gif" />
+<img src="/files/Research/Pointwise_Stationary_Approximation/rho_0.8.gif" />
 
 
 
 ### $\rho=0.99$ 
-<img src="rho_.99.gif" />
+<img src="/files/Research/Pointwise_Stationary_Approximation/rho_.99.gif" />
 
 
 
 
 ### $\rho=1.1$ 
-<img src="rho_1.1.gif" />
+<img src="/files/Research/Pointwise_Stationary_Approximation/rho_1.1.gif" />
 
 

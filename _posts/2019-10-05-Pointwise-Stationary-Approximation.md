@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Pointwise Stationary Approximation
+permalink: /research/pointwise_stationary_approximation
 ---
 
 <script type="text/x-mathjax-config">

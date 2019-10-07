@@ -1,6 +1,7 @@
-<!-- <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script> -->
+---
+layout: post
+title: Pointwise Stationary Approximation
+---
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -22,28 +23,14 @@ In this notebook, we explore the differences between PSA and NS for computing pe
 ## US Bank Callcenter Model
 
 
-The US Bank Callcenter model is an M(t)/M/N(t) queue where the birth-rate $\lambda(t)$ and the number of servers $s(t)$ are piecewise linear and piecewise constant, over the same partition, respectively. Furthemore, $N(t)$ follows a square-root staffing model: if the average value of $\lambda(t)$ in segment $i$ is $\lambda_i$, then $s(t)=s_i$ on that segment with
+The US Bank Callcenter model is an M(t)/M/N(t) queue where the birth-rate $\lambda(t)$ and the number of servers $s(t)$ are piecewise linear and piecewise constant, over the same partition, respectively. Furthemore, $N(t)$ follows a square-root staffing model: if the average value of $\lambda(t)$ over segment $i$ is $\lambda_i$, then $s(t)=s_i$ on that segment with
+
+
 $$
 s_i  = \frac{\lambda_i}{\mu} + 3\sqrt{\frac{\lambda_i}{\mu}}.
 $$
 
 We show $\lambda(t)$ and $s(t)$ on a double axis plot in Figure 1 below.
-
-
-```julia 
-
-
-t = 1:1:1440
-lambdas = US_Bank_Lambda(t)
-println()
-plot(t,lambdas, label = "\\lambda (t)", title = "Figure 1: Arrival rate \\lambda (t) for US Bank Callcenter", xlabel="Time (min)", ylabel="Arrival rate \\lambda", size =(800,500), legend = false)
-plt = twinx()
-plot!(plt, US_Bank_Servers(t), color=:red, ylabel="Number of Servers", legend = false)
-
-
-```
-
-
 
 ![svg](lambda.svg)
 

@@ -123,8 +123,9 @@ end
 
 The fact that they all differ by the infinite server approximation by the same amount to so many digits suggests that the error is dominated by the infinite server approximation. 
 
+&nbsp;
 
-## US Bank Callcenter Model
+# US Bank Callcenter Model
 
 
 The US Bank Callcenter model is an $$M(t)/M/N(t)$$ queue where the birth-rate $$\lambda(t)$$ and the number of servers $$s(t)$$ are piecewise linear and piecewise constant, over the same partition, respectively. Furthemore, $$N(t)$$ follows a square-root staffing model: if the average value of $$\lambda(t)$$ over segment $$i$$ is $$\lambda_i$$, then $$s(t)=s_i$$ on that segment with

@@ -139,6 +139,9 @@ $$
 
 We show $$\lambda(t)$$ and $$s(t)$$ on a double axis plot in Figure 1 below.
 
+&nbsp;
+&nbsp;
+
 ![svg](/files/Research/Pointwise_Stationary_Approximation/lambda.svg)
 
 

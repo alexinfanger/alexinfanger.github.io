@@ -39,7 +39,7 @@ The US Bank Callcenter model is an $$M(t)/M(t)/N(t)$$ queue where the arrival ra
 ![svg](/files/Research/Pointwise_Stationary_Approximation/figures/US_Bank_model.svg)
 &nbsp;
 
-We use a finite waiting room approximation to the infinite waiting room model. That is we pick a state space. We find that the choice $$\mathcal{S}=\{0,1....,S\}$$ with $$S=470$$ is sufficient.
+There is an abandonment rate of 0.134 1/min (that is, customers have a patience of approximately 7.5 minutes). We use a finite waiting room approximation to the infinite waiting room model. That is we pick a state space. We find that the choice $$\mathcal{S}=\{0,1....,S\}$$ with $$S=470$$ is sufficient.
 
 Below we plot the correlation coefficient for a few representative samples of $$u=10,20,30$$ on the US Bank Callcenter model.
 

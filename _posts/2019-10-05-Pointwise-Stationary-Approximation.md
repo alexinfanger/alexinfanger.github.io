@@ -53,12 +53,21 @@ r(x) = \frac{[x-s(t)]^+}{\mu}.
 $$
 </p>
 
-![svg](/files/Research/Pointwise_Stationary_Approximation/figures/loss_prob_values.svg)
-![svg](/files/Research/Pointwise_Stationary_Approximation/figures/prob_rel_error.svg)
 
+### Probability of Wait
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/prob_wait_values.svg)
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/prob_wait_abs_err.svg)
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/prob_wait_rel_err.svg)
+
+### Expected Waiting Time
 
 ![svg](/files/Research/Pointwise_Stationary_Approximation/figures/exp_wait_values.svg)
-![svg](/files/Research/Pointwise_Stationary_Approximation/figures/exp_wait_rel_error.svg)
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/exp_wait_abs_err.svg)
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/exp_wait_rel_err.svg)
 
 
 

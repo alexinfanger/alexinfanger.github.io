@@ -128,34 +128,20 @@ The fact that they all differ by the infinite server approximation by the same a
 # US Bank Callcenter Model
 
 
-The US Bank Callcenter model is an $$M(t)/M/N(t)$$ queue where the birth-rate $$\lambda(t)$$ and the number of servers $$s(t)$$ are piecewise linear and piecewise constant, over the same partition, respectively. Furthemore, $$N(t)$$ follows a square-root staffing model: if the average value of $$\lambda(t)$$ over segment $$i$$ is $$\lambda_i$$, then $$s(t)=s_i$$ on that segment with
-
-
-<p>
-$$
-s_i  = \frac{\lambda_i}{\mu} + 3\sqrt{\frac{\lambda_i}{\mu}}.
-$$
-</p>
-
-We show $$\lambda(t)$$ and $$s(t)$$ on a double axis plot in Figure 1 below.
+The US Bank Callcenter model is an $$M(t)/M(t)/N(t)$$ queue where the arrival rate $$\lambda(t)$$, the service rate $$\mu(t)$$, and the number of servers $$s(t)$$ are piecewise linear, piecewise constant, and piecewise constant, over an hourly partition, respectively. We show $$\lambda(t)$$, the service completions $$\mu(t)s(t)$$, and $$s(t)$$ on a double axis plot in Figure 1 below.
 
 &nbsp;
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/US_Bank_model.svg)
 &nbsp;
 
-![svg](/files/Research/Pointwise_Stationary_Approximation/lambda.svg)
+We use a finite waiting room approximation to the infinite waiting room model. That is we pick a state space. We find that the choice $$\mathcal{S}=\{0,1....,S\}$$ with $$S=470$$ is sufficient.
 
-
-
-Observe that during maximum load, we have that $$\frac{\lambda(t)}{\mu}\approx 300$$ and hence, we choose a waiting room of size $$ S =300 + 10\sqrt{300}\approx 470$$. In other words, the state space is $$\mathcal{S} = \{0,1,...,470\}$$.
-
-
-In the following two plots, we show the total variation error of the calculated stationary distributions from a reference measure. For the first plot, the reference is the linear system based solver (5). For the second, it's the birth death starting at mode solver (2). All the errors are contained within 1e-12.
+The only solver which failed to converge for all times on the above movdel was the linear system based solver (5). In the following plot, we show the total variation error of the calculated stationary distributions from a reference measure. For the reference measure, we use the birth death starting at mode solver (2). 
 
 
 
 ![svg](/files/Research/Stationary_Distribution_Calculations/output_12_0.svg)
 
 
-
-![svg](/files/Research/Stationary_Distribution_Calculations/output_13_0.svg)
 

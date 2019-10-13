@@ -10,28 +10,27 @@ We measure how well the Pointwise Stationary Approximation (PSA) serves for comp
 ## US Bank Callcenter Model
 
 
-The US Bank Callcenter model is an $$M(t)/M/N(t)$$ queue where the birth-rate $$\lambda(t)$$ and the number of servers $$s(t)$$ are piecewise linear and piecewise constant, over the same partition, respectively. Furthemore, $$N(t)$$ follows a square-root staffing model: if the average value of $$\lambda(t)$$ over segment $$i$$ is $$\lambda_i$$, then $$s(t)=s_i$$ on that segment with
+The US Bank Callcenter model is an $$M(t)/M(t)/N(t)$$ queue where the arrival rate $$\lambda(t)$$, the service rate $$\mu(t)$$, and the number of servers $$s(t)$$ are piecewise linear, piecewise constant, and piecewise constant, over an hourly partition, respectively. We show $$\lambda(t)$$, the service completions $$\mu(t)s(t)$$, and $$s(t)$$ on a double axis plot in Figure 1 below.
 
+&nbsp;
 
-<p>
-$$
-s_i  = \frac{\lambda_i}{\mu} + 3\sqrt{\frac{\lambda_i}{\mu}}.
-$$
-</p>
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/US_Bank_model.svg)
+&nbsp;
 
-We show $$\lambda(t)$$ and $$s(t)$$ on a double axis plot in Figure 1 below.
-
-![svg](/files/Research/Pointwise_Stationary_Approximation/lambda.svg)
-
-
-
-Observe that during maximum load, we have that $$\frac{\lambda(t)}{\mu}\approx 300$$ and hence, we choose a waiting room of size $$ S =300 + 10\sqrt{300}\approx 470$$. In other words, the state space is $$\mathcal{S} = \{0,1,...,470\}$$.
+We use a finite waiting room approximation to the infinite waiting room model. That is we pick a state space. We find that the choice $$\mathcal{S}=\{0,1....,S\}$$ with $$S=470$$ is sufficient.
 
 
 
 We start by computing the non-stationary time evolution versus the stationary time evolution of the measures. For the NS model, we assume that we start at time 0 at the stationary distribution of Q(0), so that the methods coincide at time 0. 
 
-In the following cell we compute some performance measures. In particular, we plot the probability-of-waiting, expected number waiting, and mean waiting time. The probability of waiting corresponds to the reward function
+
+<img src="/files/Research/Pointwise_Stationary_Approximation/figures/measures.gif" />
+
+Below we show the TV error as a function of time between PSA and NS.
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/TV_Error.svg)
+
+In the following, we compute some performance measures. In particular, we plot the probability-of-waiting, expected number waiting, and mean waiting time. The probability of waiting corresponds to the reward function
 
 <p>
 $$
@@ -54,21 +53,17 @@ r(x) = \frac{[x-s(t)]^+}{\mu}.
 $$
 </p>
 
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/loss_prob_values.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/prob_rel_error.svg)
+
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/exp_wait_values.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/exp_wait_rel_error.svg)
 
 
 
-<img src="/files/Research/Pointwise_Stationary_Approximation/US_Bank.gif" />
 
-
-
-![svg](/files/Research/Pointwise_Stationary_Approximation/prob_values.svg)
-![svg](/files/Research/Pointwise_Stationary_Approximation/prob_rel_error.svg)
-
-
-![svg](/files/Research/Pointwise_Stationary_Approximation/exp_wait_values.svg)
-![svg](/files/Research/Pointwise_Stationary_Approximation/exp_wait_rel_error.svg)
-
-
+<!-- 
 # Fast Rise Time
 
 We now investigate the discrepancy of PSA and NS when $$\lambda(t)$$ increases the fastest for varying choices of constant $$s(t)=s$$. From the US Callcenter data, we see that during the period of fastest increase, $$\lambda(t)$$ ranges from approximately $$~50/6 = 8.3$$ to $$100$$ from time $$t=420$$ to $$t=600$$. (This can be confirmed in Figure 1 above.) In other words, in the span of three hours, $$\lambda(t)$$ increases by about 90. 
@@ -113,5 +108,7 @@ Here we consider only the ramp up period going from $$\lambda=10$$ to $$\lambda 
 
 ![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_exp_wait_values_1.1.svg)
 ![svg](/files/Research/Pointwise_Stationary_Approximation/fast_rise_exp_wait_rel_error_1.1.svg)
+
+ -->
 
 

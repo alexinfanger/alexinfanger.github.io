@@ -28,7 +28,7 @@ We start by computing the non-stationary time evolution versus the stationary ti
 
 Below we show the TV error as a function of time between PSA and NS.
 
-![svg](/files/Research/Pointwise_Stationary_Approximation/figures/TV_Error.svg)
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/TV_error.svg)
 
 In the following, we compute some performance measures. In particular, we plot the probability-of-waiting, expected number waiting, and mean waiting time. The probability of waiting corresponds to the reward function
 

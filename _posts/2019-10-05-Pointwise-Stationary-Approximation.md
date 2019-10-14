@@ -122,8 +122,50 @@ Here we consider only the ramp up period going from $$\lambda=10$$ to $$\lambda 
 
 ##  Citi Bike Model
 
-Here we examine a model of one bike station estimated from data from the Grove Street Path bike station in New York City. We use a simple hourly linear interpolation for the birth and death rates of bikes at the station.
+Here we examine a model of one bike station estimated from data from the Grove Street Path bike station in New York City. We use a simple hourly linear interpolation for the birth and death rates of bikes at the station. The Grove Street Path station has 41 docks. 
 
 ![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike_model.svg)
+
+
+
+We start by computing the non-stationary time evolution versus the stationary time evolution of the measures. For the NS model, we assume that we start at time 0 at the stationary distribution of Q(0), so that the methods coincide at time 0. 
+
+
+<img src="/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike/measures.gif" />
+
+Below we show the TV error as a function of time between PSA and NS.
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike/TV_error.svg)
+
+In the following, we compute some performance measures. In particular, we plot the probability of having an empty dock and the probability of having a full dock. The probability of an empty dock corresponds to the reward function
+
+<p>
+$$
+r(x) = I(x=0).
+$$
+</p>
+
+The probability of a full dock corresponds to
+<p>
+$$
+r(x) = I(x=S).
+$$
+</p>
+
+
+### Probability of Full Dock
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike/prob_full_dock_values.svg)
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike/prob_full_dock_abs_err.svg)
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike/prob_full_dock_rel_err.svg)
+
+### Probability of Empty Dock
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike/prob_empty_dock_values.svg)
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike/prob_empty_dock_abs_err.svg)
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike/prob_empty_dock_rel_err.svg)
 
 

@@ -120,4 +120,10 @@ Here we consider only the ramp up period going from $$\lambda=10$$ to $$\lambda 
 
  -->
 
+##  Citi Bike Model
+
+Here we examine a model of one bike station estimated from data from the Grove Street Path bike station in New York City. We use a simple hourly linear interpolation for the birth and death rates of bikes at the station.
+
+![svg](/files/Research/Pointwise_Stationary_Approximation/figures/citi_bike_model.svg)
+
 

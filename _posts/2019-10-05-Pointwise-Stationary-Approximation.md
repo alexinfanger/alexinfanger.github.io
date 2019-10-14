@@ -71,6 +71,12 @@ $$
 
 
 
+## A Careful Look at the Probability of Wait Absolute Difference 
+
+<img src="/files/Research/Pointwise_Stationary_Approximation/figures/abs_diff.gif" />
+
+
+
 
 <!-- 
 # Fast Rise Time
